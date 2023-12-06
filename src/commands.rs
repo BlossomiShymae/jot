@@ -61,6 +61,12 @@ pub struct CreateArgs {
 
 impl Executable for CreateArgs {
     fn execute(&self, conn: &Connection) -> Result<(), miette::ErrReport> {
+        let notes = data::select_all(&conn)?;
+        let exists = notes.iter().any(|n| n.name == self.name);
+        if exists {
+            return Err(miette!("Note already exists by that name!"));
+        }
+
         let body = edit::edit("").map_err(|e| miette!("{}", e))?;
         let mut note = data::Note::default();
         note.name = self.name.clone();
