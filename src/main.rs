@@ -25,7 +25,7 @@ async fn main() -> Result<(), miette::ErrReport> {
     let cli = Cli::parse();
 
     let status = match cli.command {
-        Commands::Info(args) => args.execute(&conn)?,
+        Commands::Note(args) => args.execute(&conn)?,
         Commands::List(args) => args.execute(&conn)?,
         Commands::Create(args) => args.execute(&conn)?,
         Commands::Edit(args) => args.execute(&conn)?,

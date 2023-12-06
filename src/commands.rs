@@ -13,7 +13,7 @@ pub struct Cli {
 
 #[derive(Subcommand)]
 pub enum Commands {
-    Info(InfoArgs),
+    Note(NoteArgs),
     List(ListArgs),
     Create(CreateArgs),
     Edit(EditArgs),
@@ -25,12 +25,12 @@ pub trait Executable {
 }
 
 #[derive(Args)]
-pub struct InfoArgs {
+pub struct NoteArgs {
     #[arg(help = "The name of the note.")]
     name: String,
 }
 
-impl Executable for InfoArgs {
+impl Executable for NoteArgs {
     fn execute(&self, conn: &Connection) -> Result<(), miette::ErrReport> {
         let note = data::select(&conn, &self.name)?;
         println!("{}", note);

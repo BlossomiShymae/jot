@@ -12,7 +12,7 @@ EDITOR      # The text editor to use for creating and editing notes.
 ## Commands
 
 ```bash
-info      <NAME>   Read a stored note.
+note      <NAME>   Read a stored note.
 list      
 create    <NAME>   Create a note and opens the editor.
 edit      <NAME>   Edit a note via the editor.
