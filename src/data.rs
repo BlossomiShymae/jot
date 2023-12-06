@@ -1,4 +1,5 @@
 use miette::miette;
+use owo_colors::OwoColorize;
 use rusqlite::Connection;
 use std::{fmt::Display, str};
 
@@ -11,7 +12,7 @@ pub struct Note {
 
 impl Display for Note {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", self.body)
+        write!(f, "{}", self.body.bright_yellow())
     }
 }
 
